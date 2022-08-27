@@ -75,7 +75,7 @@ h2{
     transition: 0.3s;
   }
   .file-drop-area.is-active {
-    background-color: #a8dadc;
+    background-color: #cbffda;
   }
   
   .fake-btn {
