@@ -62,16 +62,6 @@ const uploadImage = (e) => {
   reader.readAsDataURL(e.target.files[0]);
 };
 
-// const img3 = new Image();
-// img3.src = imageSrc1;
-// img3.onload = function() {
-//   containerCtx.drawImage(img3, 220, 222, 100, 100)
-// }
-
-
-
-
-
 
 const imageLoader = document.getElementById("uploader");
 imageLoader.addEventListener("change", uploadImage);

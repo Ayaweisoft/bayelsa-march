@@ -13,7 +13,7 @@ body{
     /* width: 100vw; */
     background: rgb(36,161,72);
 background: linear-gradient(153deg, rgba(36,161,72,0.15143603133159267) 47%, rgba(36,161,148,0.09660574412532641) 100%);    position: relative;
-    padding: 3rem 0;
+    padding-top: 3rem;
 }
 
 .section{
@@ -23,6 +23,7 @@ background: linear-gradient(153deg, rgba(36,161,72,0.15143603133159267) 47%, rgb
     gap: 2rem;
     justify-content: center;
     align-items: center;
+    margin-bottom: 3rem;
 }
 
 .heading{
@@ -183,4 +184,22 @@ button:hover{
     border: 2px solid #24A148;
     background: transparent;
     color: #24A148;
+}
+
+footer {
+  width: 100%;
+  background-color: #24A148;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0 0.3rem 0;  
+}
+
+footer .p{
+  font-size: 1rem;
+  font-style: italic;
+}
+
+footer .p a{
+  color: #fff;
+  /* text-decoration: none; */
 }
