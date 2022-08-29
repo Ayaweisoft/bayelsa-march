@@ -39,10 +39,18 @@ const imageSrc2 = 'bayelsa_march.png';
 let container = document.getElementById('container');
 let containerCtx = container.getContext('2d');
 
+let preview = document.getElementById('preview');
+let previewCtx = preview.getContext('2d');
+
 const reader = new FileReader();
 const img = new Image();
 
-//bg image
+
+const img2 = new Image();
+img2.src = imageSrc2;
+img2.onload = function() {
+  previewCtx.drawImage(img2, 0, 0, 400, 400)
+}
 
 
 const uploadImage = (e) => {
@@ -54,7 +62,7 @@ const uploadImage = (e) => {
       img2.onload = function() {
         containerCtx.globalAlpha = 1.0;
         containerCtx.drawImage(img2, 0, 0, 400, 400)
-}
+      }
     }
     img.src = reader.result;
     console.log(reader.result);

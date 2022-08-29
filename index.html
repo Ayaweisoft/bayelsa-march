@@ -21,12 +21,27 @@
       <input class="file-input" id="uploader" type="file">
       <div class="item-delete" id="item-delete"></div>
     </div>
-    <div class="flyer-container">
-      <canvas id="container" 
-        class="canvas"
-        width="400"
-        height="400">
-      </canvas>
+    <div class="container">
+      <div class="cont-row">
+        <h2>Before</h2>
+        <div class="flyer-container">
+          <canvas id="preview" 
+            class="preview"
+            width="400"
+            height="400">
+          </canvas>
+        </div>
+      </div>
+      <div class="cont-row">
+        <h2>Result</h2>
+        <div class="flyer-container">
+          <canvas id="container" 
+            class="canvas"
+            width="400"
+            height="400">
+          </canvas>
+        </div>
+      </div>
     </div>
     <button>Download</button>
   </div>
