@@ -34,8 +34,8 @@ $delete.on("click", function () {
 });
 
 //image logic
-
-const imageSrc2 = 'WhatsApp Image 2022-08-25 at 7.09.59 PM.jpeg';
+const imageSrc1 = 'WhatsApp Image 2022-08-25 at 7.09.59 PM.jpeg'
+const imageSrc2 = 'bayelsa_march.png';
 let container = document.getElementById('container');
 let containerCtx = container.getContext('2d');
 
@@ -43,23 +43,35 @@ const reader = new FileReader();
 const img = new Image();
 
 //bg image
-const img2 = new Image();
-img2.src = imageSrc2;
-img2.onload = function() {
-  containerCtx.globalAlpha = 1.0;
-  containerCtx.drawImage(img2, 0, 0, 400, 400)
-}
+
 
 const uploadImage = (e) => {
   reader.onload = () => {
     img.onload = function() {
       containerCtx.drawImage(img, 220, 222, 115, 115)
+      const img2 = new Image();
+      img2.src = imageSrc2;
+      img2.onload = function() {
+        containerCtx.globalAlpha = 1.0;
+        containerCtx.drawImage(img2, 0, 0, 400, 400)
+}
     }
     img.src = reader.result;
     console.log(reader.result);
   };
   reader.readAsDataURL(e.target.files[0]);
 };
+
+// const img3 = new Image();
+// img3.src = imageSrc1;
+// img3.onload = function() {
+//   containerCtx.drawImage(img3, 220, 222, 100, 100)
+// }
+
+
+
+
+
 
 const imageLoader = document.getElementById("uploader");
 imageLoader.addEventListener("change", uploadImage);
