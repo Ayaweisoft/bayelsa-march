@@ -36,6 +36,9 @@ $delete.on("click", function () {
 //image logic
 const imageSrc1 = 'WhatsApp Image 2022-08-25 at 7.09.59 PM.jpeg'
 const imageSrc2 = 'bayelsa_march.png';
+const imageSrc3 = 'BAYELSA FOR OBI TPN WEB.png';
+const imageSrc4 = 'christian.jpeg';
+
 let container = document.getElementById('container');
 let containerCtx = container.getContext('2d');
 
@@ -47,7 +50,7 @@ const img = new Image();
 
 
 const img2 = new Image();
-img2.src = imageSrc2;
+img2.src = imageSrc3;
 img2.onload = function() {
   previewCtx.drawImage(img2, 0, 0, 400, 400)
 }
@@ -56,16 +59,33 @@ img2.onload = function() {
 const uploadImage = (e) => {
   reader.onload = () => {
     img.onload = function() {
-      containerCtx.drawImage(img, 220, 222, 115, 115)
+      var imageHeight = img.height;
+      var imageWidth = img.width;
+      if (imageHeight > imageWidth) {
+        var ratio = imageHeight / imageWidth;
+        imageWidth = 115;
+        imageHeight = imageWidth * ratio;
+      } else {
+        var ratio = imageWidth / imageHeight;
+        imageHeight = 115;
+        imageWidth = imageHeight * ratio;
+      }
+      console.log('imageHeight = ', imageHeight, 'imageWidth = ', imageWidth);
+      containerCtx.drawImage(img, 227, 31, imageHeight, imageWidth);
+
       const img2 = new Image();
-      img2.src = imageSrc2;
+      img2.src = imageSrc3;
       img2.onload = function() {
-        containerCtx.globalAlpha = 1.0;
-        containerCtx.drawImage(img2, 0, 0, 400, 400)
+        var imageHeight = img2.height;
+        var imageWidth = img2.width;
+        console.log('w = ', img2.width, 'h = ', img2.height);
+        var ratio = imageWidth / imageHeight;
+        imageHeight = 400;
+        imageWidth = imageHeight * ratio;
+        containerCtx.drawImage(img2, 0, 0, imageHeight, imageWidth);
       }
     }
     img.src = reader.result;
-    console.log(reader.result);
   };
   reader.readAsDataURL(e.target.files[0]);
 };
