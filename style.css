@@ -223,3 +223,11 @@ footer .p a{
 .canvas-download{
   display: none;
 }
+
+#container{
+  display: none;
+}
+
+canva.show{
+  display: block;
+}

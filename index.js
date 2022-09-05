@@ -117,6 +117,8 @@ const uploadImage = (e) => {
         imageHeight = 400;
         imageWidth = imageHeight * ratio;
         containerCtx.drawImage(img2, 0, 0, imageWidth, imageHeight);
+
+        container.style.display = "block";
       }
     }
     img.src = reader.result;
@@ -124,51 +126,25 @@ const uploadImage = (e) => {
   reader.readAsDataURL(e.target.files[0]);
 };
 
-function prepareImage(img, img2){
-  const mainRatio = 6000 / 400;
-  reader.onload = () => {
-    img.onload = function() {
-      var imageHeight = img.height;
-      var imageWidth = img.width;
-      console.log('imageHeight = ', imageHeight, 'imageWidth = ', imageWidth);
-      if (imageHeight > imageWidth) {
-        var ratio = imageHeight / imageWidth;
-        imageWidth = 115 * mainRatio;
-        imageHeight = imageWidth * ratio;
-      } else {
-        var ratio = imageWidth / imageHeight;
-        imageHeight = 115 * mainRatio;
-        imageWidth = imageHeight * ratio;
-      }
-      console.log('imageHeight = ', imageHeight, 'imageWidth = ', imageWidth);
-      downloadCtx.drawImage(img, 227 * mainRatio, 31 * mainRatio, imageWidth, imageHeight);
-
-      const img2 = new Image();
-      img2.src = imageSrc3;
-      img2.onload = function() {
-        var imageHeight = img2.height;
-        var imageWidth = img2.width;
-        console.log('w = ', img2.width, 'h = ', img2.height);
-        var ratio = imageWidth / imageHeight;
-        imageHeight = 400 * mainRatio;
-        imageWidth = imageHeight * ratio;
-        downloadCtx.drawImage(img2, 0, 0, imageWidth, imageHeight);
-      }
-    }
-    img.src = reader.result;
-  };
-  reader.readAsDataURL(e.target.files[0]);
-}
-
 const imageLoader = document.getElementById("uploader");
+const downloadButton = document.querySelector("button")
 imageLoader.addEventListener("change", uploadImage);
 
 function download() {
+  
+  downloadButton.innerHTML = "Downloading...";
   const image = containerDownload.toDataURL();
   const link = document.createElement("a");
   link.href = image;
-  link.download = "image.png";
+  const currentDate = new Date();
+  const time = currentDate.getTime();
+  console.log('time = ', time);
+  link.download = `image_${time}.png`;
   link.click();
+  
+  setTimeout(() => {
+    downloadButton.innerHTML = "Download";
+  }, 2000);
 }
 
-document.querySelector("button").addEventListener("click", download);
+downloadButton.addEventListener("click", download);
