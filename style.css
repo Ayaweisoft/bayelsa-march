@@ -219,3 +219,7 @@ footer .p a{
   color: #fff;
   /* text-decoration: none; */
 }
+
+.canvas-download{
+  display: none;
+}
