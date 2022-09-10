@@ -34,7 +34,7 @@ $delete.on("click", function () {
 });
 
 //image logic
-const imageSrc3 = 'BAYELSA FOR OBI TPN WEB.png';
+const imageSrc3 = 'BAYELSA ONE MILLION MAN MARCH WEB.png';
 
 let container = document.getElementById('container');
 let containerCtx = container.getContext('2d');
